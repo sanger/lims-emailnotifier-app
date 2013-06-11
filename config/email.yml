@@ -1,0 +1,15 @@
+defaults: &defaults
+  server: "mail.sanger.ac.uk"
+  from: "s2-noreply@sanger.ac.uk"
+  from_alias: "S2 - No Reply"
+  to: "ke4@sanger.ac.uk"
+  subject: "S2 Message has been sent to the Queue"
+
+test:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

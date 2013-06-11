@@ -1,0 +1,11 @@
+From: {{from_alias}} <{{from}}>
+To: <{{to}}>
+Subject: {{subject}}
+
+An order has been created with the following items:
+
+{{order_details}}
+
+Regards
+
+S2 Team

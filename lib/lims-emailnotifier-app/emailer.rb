@@ -7,6 +7,9 @@ require 'lims-emailnotifier-app/order_requester'
 
 module Lims
   module EmailNotifierApp
+    # This class is listening on the message queue.
+    # If there is an order payload arrives to the queue, then we
+    # processes it and sending an e-mail with the order details.
     class Emailer
       include Lims::BusClient::Consumer
 
@@ -46,7 +49,7 @@ module Lims
         order_details = ""
         order_uuid = payload[ORDER_PAYLOAD].fetch("uuid")
         order_details = order_details(order_uuid)
-        unless order_details.empty?
+        if order_details && !order_details.empty?
           @email_opts["order_details"] = order_details
           send_email
         end

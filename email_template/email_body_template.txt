@@ -4,7 +4,9 @@ Subject: {{subject}}
 
 An order has been created with the following items:
 
-{{order_details}}
+{{#order_details}}
+Role: {{role}}, uuid: {{uuid}}, sanger barcode: {{sanger-barcode}}, ean13 barcode: {{ean13-barcode}}
+{{/order_details}}
 
 Regards
 

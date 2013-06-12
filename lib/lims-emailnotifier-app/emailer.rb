@@ -36,6 +36,7 @@ module Lims
           if payload_hash.keys.first == ORDER_PAYLOAD
             processing_message(metadata, payload_hash)
           end
+          metadata.ack
         end
       end
 

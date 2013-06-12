@@ -6,6 +6,6 @@ namespace :dev do
   end
 
   task :run => :setup_env do
-    sh "bundle exec ruby script/test_emailer.rb"
+    sh "bundle exec ruby script/start_emailnotifier.rb"
   end
 end

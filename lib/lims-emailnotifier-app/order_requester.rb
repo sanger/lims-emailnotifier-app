@@ -16,18 +16,12 @@ module Lims::EmailNotifierApp
     # Gets the order details by order_uuid
     # @return [Array<Hash>] the array of order item's detail
     def order_details_by_order_uuid
-      order_details = ""
-
       begin
         order_items_data = order_by_uuid
       rescue RestClient::ResourceNotFound => e
         # TODO
-      else
-        order_items_data.each do |data|
-          order_details += add_order_item_data(data)
-        end
       end
-      order_details
+      order_items_data
     end
 
     private
@@ -73,16 +67,6 @@ module Lims::EmailNotifierApp
       labellable[labellable.keys.first]["labels"].values.each do |value|
         order_item[value['type']] = value['value']
       end
-    end
-
-    # Builds a string with order item's data
-    # TODO ke4 need to be refactored to use array and hashes with Mustache
-    def add_order_item_data(item)
-      item_str = ""
-      item_str = "Role: " + item["role"] + ", uuid: " + item["uuid"]
-      item_str += ", sanger barcode: " + item["sanger-barcode"] if item["sanger-barcode"]
-      item_str += ", ean13 barcode: " + item["ean13-barcode"] if item["ean13-barcode"]
-      item_str += "\n"
     end
 
   end

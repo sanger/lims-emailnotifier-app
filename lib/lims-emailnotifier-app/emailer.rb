@@ -49,7 +49,7 @@ module Lims
         order_details = ""
         order_uuid = payload[ORDER_PAYLOAD].fetch("uuid")
         order_details = order_details(order_uuid)
-        unless order_details.empty?
+        if order_details && !order_details.empty?
           @email_opts["order_details"] = order_details
           send_email
         end

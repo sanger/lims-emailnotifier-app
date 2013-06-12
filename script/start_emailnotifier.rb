@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] = "development" unless ENV["LIMS_EMAILNOTIFIER_ENV"]
+ENV["LIMS_EMAILNOTIFIER_ENV"] = "development" unless ENV["LIMS_EMAILNOTIFIER_ENV"]
 
 require 'yaml'
 require 'lims-emailnotifier-app'

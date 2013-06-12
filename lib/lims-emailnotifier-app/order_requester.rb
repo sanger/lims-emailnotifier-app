@@ -13,6 +13,8 @@ module Lims::EmailNotifierApp
       @uuid = uuid
     end
 
+    # Gets the order details by order_uuid
+    # @return [Array<Hash>] the array of order item's detail
     def order_details_by_order_uuid
       order_details = ""
 
@@ -28,6 +30,9 @@ module Lims::EmailNotifierApp
       order_details
     end
 
+    private
+
+    # Gets the order from server and returns the order item's data
     def order_by_uuid
       order_items = []
       order = get_by_uuid(@uuid)
@@ -41,6 +46,8 @@ module Lims::EmailNotifierApp
       order_items
     end
 
+    # Fetches the order item's uuid(s) from the order JSON
+    # @return [Array] the array of order item's uuid
     def gather_item_uuids_from_order(order)
       item_uuids = []
       items = order["order"]["items"]
@@ -52,12 +59,14 @@ module Lims::EmailNotifierApp
       item_uuids.flatten
     end
 
+    # Gets a specific order item by its uuid
     def order_item_by_uuid(uuid, order_item)
       item = get_by_uuid(uuid)
       order_item["role"] = item.keys.first
       barcodes_from_order_item(item[item.keys.first]["labels"], order_item)
     end
 
+    # Gets the barcode information from the asset's JSON
     def barcodes_from_order_item(labels, order_item)
       labellable_uuid = labels.fetch("uuid")
       labellable = get_by_uuid(labellable_uuid)
@@ -66,6 +75,8 @@ module Lims::EmailNotifierApp
       end
     end
 
+    # Builds a string with order item's data
+    # TODO ke4 need to be refactored to use array and hashes with Mustache
     def add_order_item_data(item)
       item_str = ""
       item_str = "Role: " + item["role"] + ", uuid: " + item["uuid"]

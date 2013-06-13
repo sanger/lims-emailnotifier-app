@@ -17,6 +17,7 @@ module Lims
       attribute :log, Object, :required => true, :writer => :private, :reader => :private
 
       ORDER_PAYLOAD = "order"
+      ORDER_ROUTING_KEY_PATTERN = /.*\..*\.order\..*/
 
       # @param [Hash] amqp_settings
       # @param [Hash] email_opts
@@ -43,11 +44,22 @@ module Lims
         self.add_queue(queue_name) do |metadata, payload|
           log.info("Message received with the routing key: #{metadata.routing_key}")
           payload_hash = JSON.parse(payload)
-          if payload_hash.keys.first == ORDER_PAYLOAD
+          if expected_message(metadata.routing_key, payload_hash)
+            log.debug("Processing message with routing key: '#{metadata.routing_key}' and payload: #{payload}")
             processing_message(metadata, payload_hash)
           end
           metadata.ack
         end
+      end
+
+      # check if the message is an order message
+      # and this order is a create action (not update)
+      def expected_message(routing_key, payload)
+        if routing_key.match(ORDER_ROUTING_KEY_PATTERN) &&
+          payload["action"] == 'create'
+          return true
+        end
+        false
       end
 
       # Communicates with the lims-laboratory server and fetches the details

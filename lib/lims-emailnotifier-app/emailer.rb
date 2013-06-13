@@ -14,6 +14,7 @@ module Lims
       include Lims::BusClient::Consumer
 
       attribute :queue_name, String, :required => true, :writer => :private
+      attribute :log, Object, :required => true, :writer => :private, :reader => :private
 
       ORDER_PAYLOAD = "order"
 
@@ -28,6 +29,11 @@ module Lims
         set_queue
       end
 
+      # @param [Logger] logger
+      def set_logger(logger)
+        @log = logger
+      end
+
       private
 
       # Add the listener to the queue
@@ -35,6 +41,7 @@ module Lims
       # then it is processing the message and send an e-mail with its data
       def set_queue
         self.add_queue(queue_name) do |metadata, payload|
+          log.info("Message received with the routing key: #{metadata.routing_key}")
           payload_hash = JSON.parse(payload)
           if payload_hash.keys.first == ORDER_PAYLOAD
             processing_message(metadata, payload_hash)

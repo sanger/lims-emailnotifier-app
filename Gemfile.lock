@@ -24,7 +24,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-emailnotifier-app (0.0.0.0.2)
+    lims-emailnotifier-app (0.0.0.0.4)
       bunny (= 0.9.0.pre10)
       rest-client
 
@@ -65,7 +65,7 @@ GEM
     github-markup (0.7.5)
     hashdiff (0.0.6)
     method_source (0.8.1)
-    mime-types (1.21)
+    mime-types (1.23)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)

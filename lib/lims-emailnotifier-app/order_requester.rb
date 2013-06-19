@@ -50,7 +50,7 @@ module Lims::EmailNotifierApp
           item_uuids << item.fetch("uuid")
         end
       end
-      item_uuids.flatten
+      item_uuids.flatten.uniq
     end
 
     # Gets a specific order item by its uuid

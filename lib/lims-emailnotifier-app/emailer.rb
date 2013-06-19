@@ -17,7 +17,7 @@ module Lims
       attribute :log, Object, :required => true, :writer => :private, :reader => :private
 
       ORDER_PAYLOAD = "order"
-      ORDER_ROUTING_KEY_PATTERN = /.*\..*\.order\..*/
+      ORDER_ROUTING_KEY_PATTERN = /^[^\.]*\.[^\.]*\.order\.[^\.]*$/
 
       # @param [Hash] amqp_settings
       # @param [Hash] email_opts

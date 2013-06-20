@@ -4,7 +4,6 @@ require 'yaml'
 require 'lims-emailnotifier-app'
 require 'logging'
 require 'rubygems'
-require 'ruby-debug'
 
 module Lims
   module EmailNotifierApp

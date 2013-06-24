@@ -1,5 +1,3 @@
-ENV["LIMS_EMAILNOTIFIER_ENV"] = "development" unless ENV["LIMS_EMAILNOTIFIER_ENV"]
-
 require 'yaml'
 require 'lims-emailnotifier-app'
 require 'logging'
@@ -7,7 +5,8 @@ require 'rubygems'
 
 module Lims
   module EmailNotifierApp
-    env = ENV["LIMS_EMAILNOTIFIER_ENV"]
+    env = ENV["LIMS_EMAILNOTIFIER_APP_ENV"] or raise "LIMS_EMAILNOTIFIER_APP_ENV is not set in the environment"
+
     amqp_settings = YAML.load_file(File.join('config','amqp.yml'))[env]
     email_opts = YAML.load_file(File.join('config','email.yml'))[env]
     api_settings = YAML.load_file(File.join('config','api_setting.yml'))[env]

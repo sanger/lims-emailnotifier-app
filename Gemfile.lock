@@ -12,8 +12,8 @@ GIT
 
 GIT
   remote: https://github.com/sanger/lims-busclient.git
-  revision: fe61ca90f8343c689febeecea7657c284e51e5df
-  branch: master
+  revision: 6a7587c14f85d084e2729ddddccc9d56a48f7243
+  branch: development
   specs:
     lims-busclient (0.3.0)
       aequitas
@@ -40,7 +40,7 @@ GEM
       amq-client (~> 1.0.2)
       amq-protocol (>= 1.3.0)
       eventmachine
-    backports (3.3.2)
+    backports (3.3.3)
     bond (0.4.3)
     bunny (0.9.0.pre10)
       amq-protocol (>= 1.4.0)

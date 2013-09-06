@@ -4,7 +4,7 @@ source "http://rubygems.org"
 gemspec
 
 gem "mustache", "~> 0.99.4", :git => 'https://github.com/defunkt/mustache.git'
-gem 'lims-busclient', '~>0.4.0.rc1', :git => 'https://github.com/sanger/lims-busclient.git' , :branch => 'uat'
+gem 'lims-busclient', '~>0.4.0', :git => 'https://github.com/sanger/lims-busclient.git' , :branch => 'master'
 
 group :debugger do
   gem 'debugger', :platforms => :mri

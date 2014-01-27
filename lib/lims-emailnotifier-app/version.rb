@@ -1,5 +1,5 @@
 module Lims
   module EmailNotifierApp
-    VERSION = "0.2.0.rc1"
+    VERSION = "0.3.0.pre"
   end
 end

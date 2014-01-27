@@ -1,4 +1,12 @@
 GIT
+  remote: http://github.com/sanger/lims-exception-notifier-app.git
+  revision: 4e789cdb62446d6b0b3496046350a111d245fd38
+  branch: master
+  specs:
+    lims-exception-notifier-app (0.1.2)
+      mustache (~> 0.99.4)
+
+GIT
   remote: http://github.com/sanger/psd_logger.git
   revision: dd2d634114df75b1d8535715c169a7fc99521389
   specs:
@@ -24,7 +32,7 @@ GIT
 PATH
   remote: .
   specs:
-    lims-emailnotifier-app (0.2.0.rc1)
+    lims-emailnotifier-app (0.3.0.pre)
       bunny (= 0.9.0.pre10)
       rest-client
 
@@ -65,7 +73,7 @@ GEM
     github-markup (0.7.5)
     hashdiff (0.0.6)
     method_source (0.8.1)
-    mime-types (1.23)
+    mime-types (1.25.1)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -105,6 +113,7 @@ DEPENDENCIES
   hashdiff
   lims-busclient (~> 0.4.0.rc1)!
   lims-emailnotifier-app!
+  lims-exception-notifier-app (~> 0.1.2)!
   mustache (~> 0.99.4)!
   pry
   psd_logger!

@@ -1,4 +1,12 @@
 GIT
+  remote: http://github.com/sanger/lims-exception-notifier-app.git
+  revision: 4e789cdb62446d6b0b3496046350a111d245fd38
+  branch: master
+  specs:
+    lims-exception-notifier-app (0.1.2)
+      mustache (~> 0.99.4)
+
+GIT
   remote: http://github.com/sanger/psd_logger.git
   revision: dd2d634114df75b1d8535715c169a7fc99521389
   specs:
@@ -105,6 +113,7 @@ DEPENDENCIES
   hashdiff
   lims-busclient (~> 0.4.0.rc1)!
   lims-emailnotifier-app!
+  lims-exception-notifier-app (~> 0.1.2)!
   mustache (~> 0.99.4)!
   pry
   psd_logger!

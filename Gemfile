@@ -5,6 +5,7 @@ gemspec
 
 gem "mustache", "~> 0.99.4", :git => 'https://github.com/defunkt/mustache.git'
 gem 'lims-busclient', '~>0.4.0.rc1', :git => 'https://github.com/sanger/lims-busclient.git' , :branch => 'uat'
+gem 'lims-exception-notifier-app', '~>0.1.2', :git => 'http://github.com/sanger/lims-exception-notifier-app.git', :branch => 'master'
 
 group :debugger do
   gem 'debugger', :platforms => :mri

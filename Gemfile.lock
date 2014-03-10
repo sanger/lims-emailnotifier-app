@@ -1,9 +1,9 @@
 GIT
   remote: http://github.com/sanger/lims-exception-notifier-app.git
-  revision: 4e789cdb62446d6b0b3496046350a111d245fd38
+  revision: 360dda5975b21a7b5bea1575ed5de176ad9ba8fb
   branch: master
   specs:
-    lims-exception-notifier-app (0.1.2)
+    lims-exception-notifier-app (0.1.3)
       mustache (~> 0.99.4)
 
 GIT
@@ -14,9 +14,9 @@ GIT
 
 GIT
   remote: https://github.com/defunkt/mustache.git
-  revision: 5fa960715c4122857478bd3808eb135bacf325d7
+  revision: 0e170a145e3418c16267f5702fb38bf7d41e55a5
   specs:
-    mustache (0.99.4)
+    mustache (0.99.5)
 
 GIT
   remote: https://github.com/sanger/lims-busclient.git

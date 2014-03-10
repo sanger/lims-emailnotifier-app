@@ -3,6 +3,9 @@ require 'net/smtp'
 require 'mustache'
 require 'json'
 
+require 'rubygems'
+require 'ruby-debug'
+
 require 'lims-emailnotifier-app/order_requester'
 
 module Lims
@@ -18,6 +21,7 @@ module Lims
 
       ORDER_PAYLOAD = "order"
       ORDER_ROUTING_KEY_PATTERN = /^[^\.]*\.[^\.]*\.order\.[^\.]*$/
+      CREATE_ORDER_PAYLOAD_ACTION = 'create_order'
 
       # @param [Hash] amqp_settings
       # @param [Hash] email_opts
@@ -56,7 +60,7 @@ module Lims
       # and this order is a create action (not update)
       def expected_message(routing_key, payload)
         if routing_key.match(ORDER_ROUTING_KEY_PATTERN) &&
-          payload["action"] == 'create'
+          payload["action"] == CREATE_ORDER_PAYLOAD_ACTION
           return true
         end
         false

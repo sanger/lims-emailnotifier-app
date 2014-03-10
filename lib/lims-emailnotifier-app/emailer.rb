@@ -3,9 +3,6 @@ require 'net/smtp'
 require 'mustache'
 require 'json'
 
-require 'rubygems'
-require 'ruby-debug'
-
 require 'lims-emailnotifier-app/order_requester'
 
 module Lims

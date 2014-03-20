@@ -6,7 +6,10 @@ module Lims::EmailNotifierApp
     # A module for handling the GET and POST request to the server
     module API
 
-      HEADERS = {'Content-Type' => 'application/json', 'Accept' => 'application/json'}
+      HEADERS = { 'Content-Type'  => 'application/json',
+                  'Accept'        => 'application/json',
+                  'user-email'    => 's2-lims-emailnotifier-app@lims-emailnotifier-app.ac.uk'
+                }
 
       module Request
         # Sends a GET request to the server and parses the response JSON

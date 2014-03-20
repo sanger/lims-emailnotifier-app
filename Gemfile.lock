@@ -20,10 +20,10 @@ GIT
 
 GIT
   remote: https://github.com/sanger/lims-busclient.git
-  revision: 0da129dbd07a064e62e44c7d8a8fdc98131b92ce
-  branch: master
+  revision: 09730aba1fe7ff4d6fa36a9940c3fc8e04ae1bd1
+  branch: uat
   specs:
-    lims-busclient (0.4.1)
+    lims-busclient (0.4.1.rc1)
       aequitas
       amqp
       facets
@@ -119,7 +119,7 @@ DEPENDENCIES
   debugger-pry
   github-markup (~> 0.7.1)
   hashdiff
-  lims-busclient (~> 0.4)!
+  lims-busclient (~> 0.4.0.rc1)!
   lims-emailnotifier-app!
   lims-exception-notifier-app (~> 0.1)!
   mustache (~> 0.99.4)!

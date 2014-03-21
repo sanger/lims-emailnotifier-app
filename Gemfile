@@ -13,11 +13,6 @@ group :debugger do
   gem 'shotgun', :platforms => :mri
 end
 
-group :pry do
-  gem 'debugger-pry', :require => 'debugger/pry', :platforms => :mri
-  gem 'pry', :platforms => :mri
-end
-
 group :deployment do
   gem "psd_logger", :git => "http://github.com/sanger/psd_logger.git"
 end

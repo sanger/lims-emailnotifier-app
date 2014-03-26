@@ -1,4 +1,12 @@
-task :default => ["dev:run"]
+require 'rake'
+require 'rake/testtask'
+
+task :default => [:test]
+
+task :default => [:test]
+Rake::TestTask.new do |t|
+  t.pattern = 'test/**/*_spec.rb'
+end
 
 namespace :dev do
   task :setup_env do
@@ -9,3 +17,4 @@ namespace :dev do
     sh "bundle exec ruby script/start_emailnotifier.rb"
   end
 end
+

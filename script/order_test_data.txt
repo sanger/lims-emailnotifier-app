@@ -1,0 +1,63 @@
+{ "order": {
+    "user_uuid": "11111111-2222-3333-4444-555555555555",
+    "study_uuid": "11111111-2222-3333-4444-666666666666",
+    "pipeline": "pipeline 1",
+    "cost_code": "cost code 1",
+    "sources": {
+        "tube": ["11111111-2222-3333-0000-666666666666"]
+    },
+    "targets": {
+    }
+} }
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "order": {"user_uuid": "11111111-2222-3333-4444-555555555555","study_uuid": "11111111-2222-3333-4444-666666666666","pipeline": "pipeline 1","cost_code": "cost code 1","sources": {"tube": ["11111111-2222-3333-0000-666666666666"]},"targets": {}} }' http://localhost:9292/orders
+
+
+delete from uuid_resources where id= ;
+delete from orders;
+delete from items;
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"tube": {"type": "Eppendorf","max_volume": 2,"aliquots": [{"sample_uuid": "11111111-2222-3333-4444-111111111111","type": "NA","quantity": 5}]}}' http://localhost:9292/tubes
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "e607c340-b70e-0130-9ec6-406c8f37cea7","type": "resource","labels": {"side barcode": {"value": "ABC-12343","type": "sanger-barcode"}, "front barcode": {"value": "2748670880727","type": "ean13-barcode"}} }}' http://localhost:9292/labellables
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "order": {"user_uuid": "11111111-2222-3333-4444-555555555555","study_uuid": "11111111-2222-3333-4444-666666666666","pipeline": "pipeline 3","cost_code": "cost code 3","sources": {"tube": ["e607c340-b70e-0130-9ec6-406c8f37cea7"]},"targets": {}} }' http://localhost:9292/orders
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "order": {"user_uuid": "11111111-2222-3333-4444-555555555555","study_uuid": "11111111-2222-3333-4444-666666666666","pipeline": "pipeline 4","cost_code": "cost code 4","sources": {"tube_nap4": ["e607c340-b70e-0130-9ec6-406c8f37cea7, 11111111-2222-3333-0000-777777777777", "11111111-2222-3333-0000-888888888888", "11111111-2222-3333-0000-999999999999"], "tube_done4": ["11111111-2222-3333-0000-777777777777", "11111111-2222-3333-0000-888888888888", "11111111-2222-3333-0000-999999999999, e607c340-b70e-0130-9ec6-406c8f37cea7"]},"targets": {}} }' http://localhost:9292/orders
+
+ean13:
+["2748670880727", "2741854757853", "2748746359751", "2747595068692", "2740339747792", "2742794419689", "2864342335729", "2862020760818", "2861142419659", "2864843093845", "2861652094766", "2868634585687", "2883368706764", "2888290344824", "2887672984771", "2882890700769", "2885978789816", "2888089913668"]
+
+sanger:
+["JD8670880H", "JD1854757U", "JD8746359K", "JD7595068E", "JD0339747O", "JD2794419D", "JP4342335H", "JP2020760Q", "JP1142419A", "JP4843093T", "JP1652094L", "JP8634585D", "JR3368706L", "JR8290344R", "JR7672984M", "JR2890700L", "JR5978789Q", "JR8089913B"]
+
+{"order":{"actions":{"read":"http://localhost:9292/1b8b5850-9249-0131-1daf-406c8f37cea7","create":"http://localhost:9292/1b8b5850-9249-0131-1daf-406c8f37cea7","update":"http://localhost:9292/1b8b5850-9249-0131-1daf-406c8f37cea7","delete":"http://localhost:9292/1b8b5850-9249-0131-1daf-406c8f37cea7"},"uuid":"1b8b5850-9249-0131-1daf-406c8f37cea7","pipeline":"pipeline 4","status":"draft","parameters":{},"state":{},"cost_code":"cost code 4","creator":{"actions":{"read":"http://localhost:9292/11111111-2222-3333-4444-555555555555","create":"http://localhost:9292/11111111-2222-3333-4444-555555555555","update":"http://localhost:9292/11111111-2222-3333-4444-555555555555","delete":"http://localhost:9292/11111111-2222-3333-4444-555555555555"},"uuid":"11111111-2222-3333-4444-555555555555"},"study":{"actions":{"read":"http://localhost:9292/11111111-2222-3333-4444-666666666666","create":"http://localhost:9292/11111111-2222-3333-4444-666666666666","update":"http://localhost:9292/11111111-2222-3333-4444-666666666666","delete":"http://localhost:9292/11111111-2222-3333-4444-666666666666"},"uuid":"11111111-2222-3333-4444-666666666666"},"items":{"tube_nap4":[{"uuid":"11111111-2222-3333-0000-777777777777","status":"done","batch":null},{"uuid":"11111111-2222-3333-0000-888888888888","status":"done","batch":null}, {"uuid":"11111111-2222-3333-0000-999999999999","status":"done","batch":null}], "tube_done4":[{"uuid":"11111111-2222-3333-0000-777777777777","status":"done","batch":null},{"uuid":"11111111-2222-3333-0000-888888888888","status":"done","batch":null}, {"uuid":"11111111-2222-3333-0000-999999999999","status":"done","batch":null}]}},"action":"create_order","date":"2013-06-11 10:49:47 UTC","user":"user"}
+
+response = post "/labellables", <<-EOD
+    {
+    "labellable": {
+        "name": "11111111-2222-3333-4444-000000000000",
+        "type": "resource",
+        "labels": {
+            "front barcode": {
+                "value": "2748670880727",
+                "type": "ean13-barcode"
+            }
+        }
+    }
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "11111111-2222-3333-0000-666666666666","type": "resource","labels": {"front barcode": {"value": "2748670880727","type": "ean13-barcode"}}}}' http://localhost:9292/labellables
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "11111111-2222-3333-0000-666666666666","type": "resource","labels": {"side barcode": {"value": "ABC-12343","type": "sanger-barcode"}, "front barcode": {"value": "2748670880727","type": "ean13-barcode"}} }}' http://localhost:9292/labellables
+
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "order": {"user_uuid": "11111111-2222-3333-4444-555555555555","study_uuid": "11111111-2222-3333-4444-666666666666","pipeline": "pipeline 2","cost_code": "cost code 2","sources": {"tube": ["11111111-2222-3333-0000-777777777777", "11111111-2222-3333-0000-888888888888", "11111111-2222-3333-0000-999999999999"]},"targets": {}} }' http://localhost:9292/orders
+
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "order": {"user_uuid": "11111111-2222-3333-4444-555555555555","study_uuid": "11111111-2222-3333-4444-666666666666","pipeline": "pipeline 2","cost_code": "cost code 2","sources": {"tube_nap": ["11111111-2222-3333-0000-777777777777", "11111111-2222-3333-0000-888888888888", "11111111-2222-3333-0000-999999999999"], "tube_done": ["11111111-2222-3333-0000-777777777777", "11111111-2222-3333-0000-888888888888", "11111111-2222-3333-0000-999999999999"]},"targets": {}} }' http://localhost:9292/orders
+
+
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "11111111-2222-3333-0000-777777777777","type": "resource","labels": {"side barcode": {"value": "JD1854757U","type": "sanger-barcode"}, "front barcode": {"value": "2741854757853","type": "ean13-barcode"}} }}' http://localhost:9292/labellables
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "11111111-2222-3333-0000-888888888888","type": "resource","labels": {"side barcode": {"value": "JD8746359K","type": "sanger-barcode"}, "front barcode": {"value": "2748746359751","type": "ean13-barcode"}} }}' http://localhost:9292/labellables
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"labellable": {"name": "11111111-2222-3333-0000-999999999999","type": "resource","labels": {"side barcode": {"value": "JD7595068E","type": "sanger-barcode"}, "front barcode": {"value": "2747595068692","type": "ean13-barcode"}} }}' http://localhost:9292/labellables
